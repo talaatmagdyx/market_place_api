@@ -55,7 +55,7 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test "should destroy product" do
+  test 'should destroy product' do
     assert_difference('Product.count', -1) do
       delete api_v1_product_url(@product), headers: {
         Authorization: JsonWebToken.encode(user_id: @product.user_id) },
@@ -63,7 +63,7 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :no_content
   end
-  test "should forbid destroy product" do
+  test 'should forbid destroy product' do
     assert_no_difference('Product.count') do
       delete api_v1_user_url(@product), headers: {
         Authorization: JsonWebToken.encode(user_id: users(:two).id) },
@@ -71,4 +71,5 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :forbidden
   end
+  
 end
