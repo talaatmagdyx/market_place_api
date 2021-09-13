@@ -4,8 +4,9 @@ class Api::V1::ProductsController < ApplicationController
   before_action :check_owner, only: %i[update destroy]
 
   def index
-    @products = Product.all
-    render json: ProductSerializer.new(@products).serializable_hash
+    @products = Product.search(params)
+    options = { include: [:user] }
+    render json: ProductSerializer.new(@products, options).serializable_hash
   end
 
   def show
