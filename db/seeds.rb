@@ -1,9 +1,9 @@
 Product.delete_all
 User.delete_all
-30.times do
+3.times do
   user = User.create! email: Faker::Internet.email, password: (8...50).map { (65 + rand(26)).chr }.join
   puts "Created a new user: #{user.email}"
-  100.times do
+  2.times do
     product = Product.create!(
       title: Faker::Commerce.product_name,
       price: rand(1.0..100.0),
