@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  include ActiveModel::Validations
+
+  validates_with EnoughProductsValidator
   before_validation :set_total!
 
   belongs_to :user

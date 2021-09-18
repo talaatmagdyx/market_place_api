@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
   setup do
@@ -19,5 +19,10 @@ class OrderTest < ActiveSupport::TestCase
     assert_difference('Placement.count', 2) do
       @order.save
     end
+  end
+
+  test 'an order should command not too much product than available' do
+    @order.placements << Placement.new(product_id: @product1.id, quantity: (1 + @product1.quantity))
+    assert_not @order.valid?
   end
 end
