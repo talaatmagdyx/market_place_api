@@ -8,10 +8,7 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
     get api_v1_products_url, as: :json
     assert_response :success
     json_response = JSON.parse(response.body, symbolize_names: true)
-    assert_not_nil json_response.dig(:links, :first)
-    assert_not_nil json_response.dig(:links, :last)
-    assert_not_nil json_response.dig(:links, :prev)
-    assert_not_nil json_response.dig(:links, :next)
+    assert_json_response_is_paginated json_response
   end
   test 'should show product' do
     get api_v1_product_url(@product), as: :json
