@@ -28,7 +28,11 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     json_response = JSON.parse(response.body)
     include_product_attr = json_response['included'][0]['attributes']
-    assert_equal @order.products.first.title, include_product_attr['title']
+    puts '========================='
+    p include_product_attr
+    puts ';;;;;;;;;;;;;;;;;;;;;;;;;'
+    p @order
+    assert_equal @order.title, include_product_attr['title']
   end
 
   test 'should forbid create order for unlogged' do
