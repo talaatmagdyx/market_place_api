@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   validates :email, uniqueness: true
-  validates_format_of :email, with: /@/
+  validates_format_of :email, with: /\A@\z/
   validates :password_digest, presence: true
 
 end

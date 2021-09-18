@@ -52,3 +52,5 @@ gem "kaminari", "~> 1.2"
 gem "bullet", "~> 6.1", :group => :development
 
 gem "rack-cors", "~> 1.1"
+
+gem "brakeman", "~> 5.1", :group => :development
